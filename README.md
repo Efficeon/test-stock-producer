@@ -10,7 +10,7 @@ git clone https://github.com/Efficeon/test-stock-streams.git
 ### Creating Topics
 After runing the application, the topics will be created automatically
 
-### Tasks
+### Tasks (only part 1)
 Есть входные данные, гипотетические котивки акций, нужно сгенерить поток котировок транформировать его и сохранить в кафку.
 
 1. Нужно писать генератор которые будет продюсить в кафку котировки
