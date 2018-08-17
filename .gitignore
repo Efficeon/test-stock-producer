@@ -4,6 +4,7 @@
 *.iml
 *.ipr
 
+/target/**
 */target/**
 Будет удалено .idea/
 Будет удалено README.md
