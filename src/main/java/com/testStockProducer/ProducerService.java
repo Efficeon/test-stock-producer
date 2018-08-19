@@ -1,7 +1,5 @@
 package com.testStockProducer;
 
-import kafka.utils.ZKStringSerializer$;
-import org.I0Itec.zkclient.ZkClient;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -16,15 +14,6 @@ import java.util.Properties;
 public class ProducerService {
 
     private final static String BOOTSTRAP_SERVER = "localhost:9092";
-    private final static String ZK_SERVER = "localhost:2181";
-
-    static void createTopic(String topicName) {
-        AdminClient admin = AdminClient.create(initConfig());
-
-        ZkClient zkClient = new ZkClient(ZK_SERVER, 10000, 10000, ZKStringSerializer$.MODULE$);
-        admin.createTopics(Collections.singletonList(new NewTopic(topicName, 1, (short) 1).configs(new HashMap<>())));
-        zkClient.close();
-    }
 
     static Properties initConfig() {
         Properties properties = new Properties();
@@ -35,5 +24,10 @@ public class ProducerService {
         properties.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG , "earliest");
 
         return properties;
+    }
+
+    static void createTopic(String topicName) {
+        AdminClient admin = AdminClient.create(initConfig());
+        admin.createTopics(Collections.singletonList(new NewTopic(topicName, 1, (short) 1).configs(new HashMap<>())));
     }
 }
