@@ -1,14 +1,13 @@
 package com.testStockProducer;
 
 import org.apache.kafka.clients.producer.*;
-
 import java.util.*;
 
 public class ProducerApplication {
 
     private final static String TOPIC_MASTER = "stock-topic-master";
 
-    static void main(String[] args) {
+    public static void main(String[] args) {
         ProducerService.createTopic(TOPIC_MASTER);
         startProducer(TOPIC_MASTER);
     }
@@ -27,7 +26,6 @@ public class ProducerApplication {
                 producer.send(producerRecord);
             }
         }
-
         producer.flush();
         producer.close();
     }
